@@ -3,7 +3,7 @@ body {
     font-family: "JetBrains Mono", monospace;
 }
 h1{
-    color: #36395A;
+    color: #27293d;
 }
 
 .button-30 {
@@ -51,6 +51,11 @@ h1{
     transform: translateY(2px);
 }
 
+h5{
+    margin: 0px;
+    color: #6d708a;
+}
+
 table{
 
     width: 340px;
@@ -71,6 +76,7 @@ td {
 
 #percent-el{
 letter-spacing: -0.5px;
+margin-bottom: 0px;
 }
 
 

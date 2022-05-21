@@ -1,6 +1,9 @@
 background-color: rgb(184, 183, 236); - purple
 
-
+git status
+git add .
+git commit -m "comment"
+git push
 
 
 

@@ -51,10 +51,8 @@ h1{
     transform: translateY(2px);
 }
 
-h5{
-    margin: 0px;
-    color: #6d708a;
-}
+
+
 
 table{
     width: 340px;
@@ -78,6 +76,12 @@ letter-spacing: -0.5px;
 margin-bottom: 0px;
 }
 
+
+h5{
+    margin: 0px;
+    color: #6d708a;
+
+}
 
 footer, a{
     text-align: right;

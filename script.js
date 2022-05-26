@@ -92,7 +92,7 @@ function buildTable(arr) { // Pulls Data from ARRAY and Builds the table rows
                                 <td>Saves = ${savedNumber}</td>
                               </tr>`
 }
-/*
+
 function disableBtn() { // Disables the buttons (when outside the time limit)
     document.getElementById("fapped-btn").disabled = true;
     document.getElementById("saved-btn").disabled = true;
@@ -103,7 +103,7 @@ function enableBtn() { // Enables the buttons (when inside the time limit)
     document.getElementById("fapped-btn").disabled = false;
     document.getElementById("saved-btn").disabled = false;
     document.getElementById("demo").innerHTML = "Buttons are Enabled"
-}*/
+}
 
 function retrieveData() { // Retrieves data from local storage and assigns it to respective variables
     savedData = JSON.parse(localStorage.getItem("progressArray"));
@@ -212,7 +212,7 @@ function block(x) {
 */
 
 //-------------- ALTERNATE APPROACH WITHOUT THE COUNTDOWN >
-/*
+
 var checkHour = new Date().getHours()
 var checkMinutes = new Date().getMinutes()
 var hourNum = 22 // Give the Hour Number here
@@ -231,7 +231,7 @@ if (checkHour == hourNum) {
     disableBtn()
     document.getElementById("demo").innerHTML = "Buttons are Disabled until 5pm Tomorrow"
 }
-*/
+
 
 // ---------------------- CLOCK ----------------------
 setInterval(function () {

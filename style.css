@@ -6,6 +6,10 @@ h1{
     color: #27293d;
 }
 
+#timeNow{
+    margin-top: 20px;
+}
+
 .button-30 {
     align-items: center;
     appearance: none;
@@ -51,8 +55,15 @@ h1{
     transform: translateY(2px);
 }
 
+.button-30:disabled{
+    text-decoration: line-through;
+}
 
 
+.countdown-live{
+    color: #3c3c46;
+    font-size: 12px;
+}
 
 table{
     width: 340px;

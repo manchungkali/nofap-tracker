@@ -4,10 +4,14 @@ body {
 }
 h1{
     color: #27293d;
+    margin-top: 20px;
 }
 
+
+
 #timeNow{
-    margin-top: 20px;
+    margin: 0px;
+    padding-top: 0px;
 }
 
 .button-30 {
@@ -50,6 +54,11 @@ h1{
     transform: translateY(-2px);
 }
 
+.button-30:hover:disabled {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(0px);
+}
+
 .button-30:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
@@ -63,6 +72,7 @@ h1{
 .countdown-live{
     color: #3c3c46;
     font-size: 12px;
+    margin-bottom: 5px;
 }
 
 table{
@@ -84,7 +94,7 @@ td {
 
 #percent-el{
 letter-spacing: -0.5px;
-margin-bottom: 0px;
+margin: 10px 0 0 0;
 }
 
 

@@ -6,6 +6,17 @@ git commit -m "comment"
 git push
 
 
+>>>>>>og table build code<<<<<
+-------------------------------
+/*
+tbodyEl.innerHTML +=
+`<tr>
+<td>Day ${dayNumber}</td>
+<td> ${status}</td>
+<td> ${percent.toFixed(2)}</td>
+</tr>`
+*/
+-------------------------------
 
 <!-- HTML !-->
 <button class="button-30" role="button">Button 30</button>

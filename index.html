@@ -15,8 +15,6 @@
 
 <body>
     <center>
-
-        <p id="timeNow">00:00:00 AM</p>
         <h1><u>N0FAP TRACKER</u></h1>
         <h2 id="days-count-el">~ DAY 1 ~</h2>
         <h2>What's the status of the day?</h2>
@@ -25,6 +23,7 @@
         <button class="button-30" id="saved-btn" onclick="saved()">Saved 💪</button>
         <br>
         <p id="demo" class="countdown-live" style="text-align:center;"></p>
+        <p id="timeNow">00:00:00 AM</p>
         <br>
         <h2 id="percent-el">Success Rate📈: 0.00%</h2>
         <h5>Try keeping it above 70</h5>
@@ -39,11 +38,16 @@
                 <td><b>Percentage</b></td>
             </tr>
         </table>
+        <table id="table-count" border="1">
+            <tr>
+                <td>Slips = 0</td>
+                <td>Saves = 0</td>
+            </tr>
+        </table>
         <br><br><br>
 
         <script src="script.js"></script>
     </center>
-
 </body>
 <footer>
     <a href="https://www.twitter.com/anasyunus_">~🐦D3V</a>

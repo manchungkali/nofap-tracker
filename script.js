@@ -215,7 +215,7 @@ function block(x) {
 
 var checkHour = new Date().getHours()
 var checkMinutes = new Date().getMinutes()
-var hourNum = 22 // Give the Hour Number here
+var hourNum = 18 // Give the Hour Number here
 if (checkHour == hourNum) {
     console.log("if> true")
     console.log(checkHour, checkMinutes)

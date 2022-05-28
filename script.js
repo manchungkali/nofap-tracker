@@ -5,6 +5,7 @@ let percentEl = document.getElementById("percent-el")
 let tbodyEl = document.getElementById("tableEl")
 let smallTableEl = document.getElementById("table-count")
 let timeNowEl = document.getElementById("timeNow")
+let todayDateEl = document.getElementById("today-date")
 let dayNumber = 0
 let fappedNumber = 0
 let savedNumber = 0
@@ -25,9 +26,9 @@ document.getElementById("saved-btn").disabled = false //keep it true
 
 
 
-
-clock()
-timer()
+showToday()
+//clock()
+//timer()
 checkSavedArray() //  {    DO NOT
 retrieveData()    //  {  CHANGE THE
 buildTable(arr)   //  { ORDER OF THESE
@@ -43,7 +44,7 @@ function fapped() { // When slipped btn is pressed
     dayIncrement()
     percentCalc(status)
     disableBtn()
-    document.getElementById("demo").innerHTML = "Buttons are Disabled for the next 24 hours"
+    document.getElementById("demo").innerHTML = "Nooo King!!! Dont throw<br> your crown like that"
 }
 
 function saved() { // When saved btn is pressed
@@ -53,19 +54,19 @@ function saved() { // When saved btn is pressed
     dayIncrement()
     percentCalc(status)
     disableBtn()
-    document.getElementById("demo").innerHTML = "Buttons are Disabled for the next 24 hours"
+    document.getElementById("demo").innerHTML = "You're an ABSOLUTE GOD 🛐 <br> Keep up the good work!"
 }
 
 function dayIncrement() { // Manages the day count
     dayNumber = dayNumber + 1
     nextDay = dayNumber + 1
-    daysCountEl.innerText = "~ DAY " + nextDay + " ~"
+    daysCountEl.innerText = "~ DAY " + dayNumber + " ~"
 }
 
 function percentCalc(status) { // Calculates the percentage and updates the html
     console.log("percent pressed")
     percent = savedNumber * 100 / dayNumber
-    percentEl.innerText = "Success Rate📈: " + percent.toFixed(2) + "%"
+    percentEl.innerText = "Hit Ratio 📈: " + percent.toFixed(2) + "%"
     addTable(status)
 }
 
@@ -114,7 +115,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
     percent = savedData[savedData.length - 1].percent
 
     daysCountEl.innerText = "~ DAY " + (dayNumber + 1) + " ~" // to update the html upon starting
-    percentEl.innerText = "Success Rate📈: " + percent + "%"
+    percentEl.innerText = "Hit Ratio 📈: " + percent + "%"
 
     //Making sure you only get a single chance a day
     singleChance()
@@ -126,9 +127,9 @@ function buildTable(arr) { // Pulls Data from ARRAY and Builds the table rows
                             <th colspan="3">Daily Progress 🚧</th>
                         </tr>
                         <tr>
-                            <td><b>Day</b></td>
-                            <td><b>Status</b></td>
-                            <td><b>Percentage</b></td>
+                            <th><b>Day</b></th>
+                            <th><b>Status</b></th>
+                            <th><b>Percentage</b></th>
                         </tr>`
     // For loop
     for (var i = 0; i < arr.length; i++) {
@@ -153,7 +154,7 @@ function singleChance() {  //Making sure you only get a single chance a day
         console.log("Dates matched 1")
         console.log(dateNumberJS, months[monthNumberJS])
         disableBtn()
-        document.getElementById("demo").innerHTML = "You had ur chance blud"
+        document.getElementById("demo").innerHTML = "You're done for the day. <br> Come back Tomorrow!"
     }
 }
 
@@ -163,6 +164,22 @@ function clr() {
     localStorage.clear();
     location.reload()
 }
+
+function clock() {
+    setInterval(function () {
+        var time = new Date();
+        var h = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: "numeric", hour12: true })
+        timeNowEl.innerHTML = h
+    }, 1000)
+}
+
+function showToday(){
+    console.log("showtoday")
+    todayDateEl.innerHTML = `${months[monthNumberJS]} ${dateNumberJS}th`
+}
+
+console.log("showtoday1")
+console.log("last line")
 
 //|||||||||||||||||||||||||||>>  TIMER ALGORITHM  <<|||||||||||||||||||||||||//
 
@@ -247,7 +264,7 @@ function block(x) {
 */
 
 //-------------- ALTERNATE APPROACH WITHOUT THE COUNTDOWN >
-
+/*
 function timer() {
     var checkHour = new Date().getHours()
     var checkMinutes = new Date().getMinutes()
@@ -268,15 +285,7 @@ function timer() {
         document.getElementById("demo").innerHTML = "Buttons are Disabled until 5pm Tomorrow"
     }
 }
+*/
 
-// ---------------------- CLOCK ----------------------
-function clock() {
-    setInterval(function () {
-        var time = new Date();
-        var h = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: "numeric", hour12: true })
-        timeNowEl.innerHTML = h
-    }, 1000)
-}
-console.log("last line")
 
 // ---------------- The Sandbox --------------

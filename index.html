@@ -15,27 +15,32 @@
 
 <body>
     <center>
-        <h1><u>N0FAP TRACKER</u></h1>
+        <h1><u>N0FAP TRACK3R</u></h1>
+        <p class="tagline"><s>Relapse</s>&nbsp;&nbsp;&nbsp;<<b>Reboot</b>>&nbsp;&nbsp;&nbsp;<s>Retreat</s></p>
+        <h4 id="today-date">MAY 17th</h4>
         <h2 id="days-count-el">~ DAY 1 ~</h2>
-        <h2>What's the status of the day?</h2>
+        <div class="report-box">
+            <h2 id="report-el">Situation Report!</h2>
+            <br>
+            <button class="button-30" id="fapped-btn" onclick="fapped()">Slipped 💦</button>&nbsp;&nbsp;
+            <button class="button-30" id="saved-btn" onclick="saved()">Saved 💪</button>
+            <br>
+            <p id="demo" class="countdown-live" style="text-align:center;">Hiya soldier! <br> What happened today?</p>
+            <p id="timeNow"></p>
+            
+        </div>
         <br>
-        <button class="button-30" id="fapped-btn" onclick="fapped()">Slipped 💦</button>&nbsp;&nbsp;
-        <button class="button-30" id="saved-btn" onclick="saved()">Saved 💪</button>
-        <br>
-        <p id="demo" class="countdown-live" style="text-align:center;"></p>
-        <p id="timeNow">00:00:00 AM</p>
-        <br>
-        <h2 id="percent-el">Success Rate📈: 0.00%</h2>
-        <h5>Try keeping it above 70</h5>
+        <h2 id="percent-el">Hit Ratio 📈: 0.00%</h2>
+        <h5>Strive to keep it above 70% !</h5>
         <br><br>
         <table id="tableEl" border="1">
             <tr>
-                <th colspan="3">Daily Progress 🚧</th>
+                <th style="color: antiquewhite;" colspan="3">Daily Progress 🚧</th>
             </tr>
             <tr>
-                <td><b>Days</b></td>
-                <td><b>Status</b></td>
-                <td><b>Percentage</b></td>
+                <th><b>Days</b></th>
+                <th><b>Status</b></th>
+                <th><b>Percentage</b></th>
             </tr>
         </table>
         <table id="table-count" border="1">
@@ -50,7 +55,7 @@
     </center>
 </body>
 <footer>
-    <a  id="clear" onclick="clr()">clr()</a>
+    <a id="clear" onclick="clr()">clr()</a>
     <a href="https://www.twitter.com/anasyunus_">~🐦D3V</a>
 </footer>
 

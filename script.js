@@ -1,5 +1,8 @@
 //|||||||||||||||||||||||||||->>  INITIALISATION  <<-|||||||||||||||||||||||||
 
+const open = document.getElementById('open');
+const close = document.getElementById('close');
+const modalContainer = document.getElementById('modal-container');
 let daysCountEl = document.getElementById("days-count-el")
 let percentEl = document.getElementById("percent-el")
 let tbodyEl = document.getElementById("tableEl")
@@ -127,7 +130,7 @@ function buildTable(arr) { // Pulls Data from ARRAY and Builds the table rows
                             <th colspan="3">Daily Progress 🚧</th>
                         </tr>
                         <tr>
-                            <th><b>Day</b></th>
+                            <th><b>Date</b></th>
                             <th><b>Status</b></th>
                             <th><b>Percentage</b></th>
                         </tr>`
@@ -176,6 +179,14 @@ function clock() {
 function showToday(){
     console.log("showtoday")
     todayDateEl.innerHTML = `${months[monthNumberJS]} ${dateNumberJS}th`
+}
+
+function openModal(){
+    modalContainer.classList.add('show');
+}
+
+function closeModal(){
+    modalContainer.classList.remove('show');
 }
 
 console.log("showtoday1")
@@ -289,3 +300,14 @@ function timer() {
 
 
 // ---------------- The Sandbox --------------
+
+
+
+open.addEventListener('click', () => {
+    openModal()
+});
+
+close.addEventListener('click', () => {
+    closeModal()
+});
+

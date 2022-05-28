@@ -13,7 +13,7 @@
     <title>N0FAP TRACK3R</title>
 </head>
 
-<body>
+<body onload="openModal()">
     <center>
         <h1><u>N0FAP TRACK3R</u></h1>
         <p class="tagline"><s>Relapse</s>&nbsp;&nbsp;&nbsp;<<b>Reboot</b>>&nbsp;&nbsp;&nbsp;<s>Retreat</s></p>
@@ -27,7 +27,7 @@
             <br>
             <p id="demo" class="countdown-live" style="text-align:center;">Hiya soldier! <br> What happened today?</p>
             <p id="timeNow"></p>
-            
+
         </div>
         <br>
         <h2 id="percent-el">Hit Ratio 📈: 0.00%</h2>
@@ -38,7 +38,7 @@
                 <th style="color: antiquewhite;" colspan="3">Daily Progress 🚧</th>
             </tr>
             <tr>
-                <th><b>Days</b></th>
+                <th><b>Date</b></th>
                 <th><b>Status</b></th>
                 <th><b>Percentage</b></th>
             </tr>
@@ -51,11 +51,40 @@
         </table>
         <br><br><br>
 
+
+        <div class="modal-container" id="modal-container">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Wait Wait Wait !!</h3>
+                    <button id="xBtn" onclick="closeModal()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Ahem... <br>
+                        allow me to introduce what the heck does this site do <br>
+                        instead of keeping a nofap streak, we are introducing a nofap percentile system <br>
+                        basically all you have to do, is come to this site everyday and enter if you fapped for that day or not <br>
+                        we handle all the calculation and whatnot <br>
+                        this data never leaves your phone, so dont be shy and be honest!
+                        so happy nofapping
+                        <br><br>
+                        if u ever need to read this again, just reload the page.
+                    </p>
+                </div>
+
+                <button id="close" onclick="closeModal()">LET'S GO!</button>
+            </div>
+        </div>
+
+
+
+
         <script src="script.js"></script>
     </center>
 </body>
 <footer>
     <a id="clear" onclick="clr()">clr()</a>
+
     <a href="https://www.twitter.com/anasyunus_">~🐦D3V</a>
 </footer>
 

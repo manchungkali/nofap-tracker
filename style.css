@@ -110,3 +110,8 @@ footer, a{
     color: #36395A;
     text-shadow: 0.3px 0.3px 0.2px rgb(90, 89, 89);
 }
+
+#clear{
+    float: left;
+    font-size: 14px;
+}

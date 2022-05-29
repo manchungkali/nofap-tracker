@@ -15,7 +15,7 @@ let savedNumber = 0
 let percent = 0
 let dateNumberJS = new Date().getDate()
 let monthNumberJS = new Date().getMonth()
-let arr = []
+let myArray = []
 let savedData = []
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
 
@@ -23,20 +23,12 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "No
 document.getElementById("fapped-btn").disabled = false //keep it true
 document.getElementById("saved-btn").disabled = false //keep it true
 
-//localStorage.clear(); /////////////////////////DANGER
 
-
-
-
-
-showToday()
 //clock()
 //timer()
-checkSavedArray() //  {    DO NOT
-retrieveData()    //  {  CHANGE THE
-buildTable(arr)   //  { ORDER OF THESE
-
-
+showToday()
+checkSavedArray() //  {    DO NOT CHANGE
+buildTable(myArray)   //  { THE ORDER OF THESE
 
 //|||||||||||||||||||||||||||->>  THE FUNCTIONLAND  <<-|||||||||||||||||||||||||
 
@@ -45,7 +37,7 @@ function fapped() { // When slipped btn is pressed
     console.log("Slipped pressed")
     fappedNumber += 1
     dayIncrement()
-    percentCalc(status)
+    percentCalc(status, dateNumberJS, monthNumberJS)
     disableBtn()
     document.getElementById("demo").innerHTML = "Nooo King!!! Dont throw<br> your crown like that"
 }
@@ -55,26 +47,26 @@ function saved() { // When saved btn is pressed
     console.log("saved pressed")
     savedNumber += 1
     dayIncrement()
-    percentCalc(status)
+    percentCalc(status, dateNumberJS, monthNumberJS)
     disableBtn()
     document.getElementById("demo").innerHTML = "You're an ABSOLUTE GOD 🛐 <br> Keep up the good work!"
 }
 
 function dayIncrement() { // Manages the day count
     dayNumber = dayNumber + 1
-    nextDay = dayNumber + 1
     daysCountEl.innerText = "~ DAY " + dayNumber + " ~"
 }
 
-function percentCalc(status) { // Calculates the percentage and updates the html
+function percentCalc(status, dateNumberJS, monthNumberJS) { // Calculates the percentage and updates the html
     console.log("percent pressed")
     percent = savedNumber * 100 / dayNumber
     percentEl.innerText = "Hit Ratio 📈: " + percent.toFixed(2) + "%"
-    addTable(status)
+    addTable(status, dateNumberJS, monthNumberJS)
+    //addTable(status, dateNumberJS, monthNumberJS)
 }
 
-function addTable(status) { // Pushes the data to ARRAY and stores the array locally
-    arr.push(
+function addTable(status, dateNumberJS, monthNumberJS) { // Pushes the data to ARRAY and stores the array locally
+    myArray.push(
         {
             day: dayNumber,
             status: status,
@@ -85,8 +77,8 @@ function addTable(status) { // Pushes the data to ARRAY and stores the array loc
             monthNumber: monthNumberJS
         }
     )
-    buildTable(arr)
-    localStorage.setItem("progressArray", JSON.stringify(arr));
+    buildTable(myArray)
+    localStorage.setItem("progressArray", JSON.stringify(myArray));
 }
 
 function disableBtn() { // Disables the buttons (when outside the time limit)
@@ -105,13 +97,16 @@ function checkSavedArray() { // Checks if the local array exists or not, if not 
     if (localStorage.getItem("progressArray") == null) {
         localStorage.setItem("progressArray", "[]")
         console.log("Locale is null")
+    } else {
+        console.log("Locale is NOt null")
+        retrieveData()
     }
 }
 
 function retrieveData() { // Retrieves data from local storage and assigns it to respective variables
     savedData = JSON.parse(localStorage.getItem("progressArray"));
-    arr = savedData
-
+    myArray = savedData
+    console.log("retrieved data is called")
     fappedNumber = savedData[savedData.length - 1].fappedNumber
     dayNumber = savedData[savedData.length - 1].day
     savedNumber = savedData[savedData.length - 1].savedNumber
@@ -124,23 +119,27 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
     singleChance()
 }
 
-function buildTable(arr) { // Pulls Data from ARRAY and Builds the table rows
+function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table rows
     console.log("Reached buildTable")
     tbodyEl.innerHTML = `<tr>
-                            <th colspan="3">Daily Progress 🚧</th>
+                            <th colspan="4">Daily Progress 🚧</th>
                         </tr>
                         <tr>
+                            <th><b>Day</b></th>
                             <th><b>Date</b></th>
                             <th><b>Status</b></th>
                             <th><b>Percentage</b></th>
+                            
                         </tr>`
     // For loop
-    for (var i = 0; i < arr.length; i++) {
+    for (var i = 0; i < myArray.length; i++) {
         console.log("Reached buildTable loop")
         var row = `<tr>
-                        <td> ${arr[i].dateNumber} ${months[arr[i].monthNumber]}</td>
-                        <td> ${arr[i].status}</td>
-                        <td> ${arr[i].percent}</td>
+                        <td> ${myArray[i].day}</td>
+                        <td> ${myArray[i].dateNumber} ${months[myArray[i].monthNumber]}</td>
+                        <td> ${myArray[i].status}</td>
+                        <td> ${myArray[i].percent}</td>
+                        
                   </tr>`
         tbodyEl.innerHTML += row
     }
@@ -176,20 +175,19 @@ function clock() {
     }, 1000)
 }
 
-function showToday(){
+function showToday() {
     console.log("showtoday")
     todayDateEl.innerHTML = `${months[monthNumberJS]} ${dateNumberJS}th`
 }
 
-function openModal(){
+function openModal() {
     modalContainer.classList.add('show');
 }
 
-function closeModal(){
+function closeModal() {
     modalContainer.classList.remove('show');
 }
 
-console.log("showtoday1")
 console.log("last line")
 
 //|||||||||||||||||||||||||||>>  TIMER ALGORITHM  <<|||||||||||||||||||||||||//
@@ -302,12 +300,4 @@ function timer() {
 // ---------------- The Sandbox --------------
 
 
-
-open.addEventListener('click', () => {
-    openModal()
-});
-
-close.addEventListener('click', () => {
-    closeModal()
-});
 

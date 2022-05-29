@@ -1,3 +1,7 @@
+// Please dont read this
+// unless u want to die from a stroke
+
+
 background-color: rgb(184, 183, 236); - purple
 
 git status

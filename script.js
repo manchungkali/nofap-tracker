@@ -46,7 +46,7 @@ function fapped() { // When slipped btn is pressed
 }
 
 function autoFapped(dateNumberJS, monthNumberJS, entryTime){
-    var status = "Slipped *"
+    var status = "Missed"
     console.log("Auto Slipped pressed")
     fappedNumber += 1
     dayIncrement()
@@ -135,14 +135,14 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
 
 function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table rows
     console.log("Reached buildTable")
-    tbodyEl.innerHTML = `<tr>
+    tableEl.innerHTML = `<tr>
                             <th colspan="4">Daily Progress 🚧</th>
                         </tr>
                         <tr>
                             <th><b>Day</b></th>
                             <th><b>Date</b></th>
                             <th><b>Status</b></th>
-                            <th><b>Percentage</b></th>
+                            <th><b>Percent</b></th>
                             
                         </tr>`
     // For loop
@@ -155,7 +155,7 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                         <td> ${myArray[i].percent}</td>
                         
                   </tr>`
-        tbodyEl.innerHTML += row
+        tableEl.innerHTML += row
     }
     smallTableEl.innerHTML = `<tr>
                                 <td>Slips = ${fappedNumber}</td>
@@ -167,23 +167,30 @@ function missingEntries(){
     console.log("missing entries called")
     let entryDifference = entryTime-lastEntryTime
 
-  
-        console.log("missing entries loop called")
+    let dateRatio = (entryDifference/86400000).toFixed(0)
+
+    setTimeout(function(){
+        while (dateRatio > 1){
+
+            console.log("yes difference")
+            console.log(dateRatio)
+            var date = new Date(lastEntryTime + 86400000) ; // create Date object
+            let tempDate = date.getDate()
+            let tempMonth = date.getMonth()
+    
+            autoFapped(tempDate,tempMonth, date.getTime())
+            console.log(entryDifference);
+            dateRatio = dateRatio - 1
+            lastEntryTime += 86400000
+
+        }
+        lastEntryTime = 0
+    }, 1000);
+
+    
         
-
-    if ((entryDifference/86400000).toFixed(0)> 1){
-
-        console.log("yes difference")
-        var date = new Date(lastEntryTime + 86400000) ; // create Date object
-        let tempDate = date.getDate()
-        let tempMonth = date.getMonth()
-
-        autoFapped(tempDate,tempMonth, date.getTime())
-        console.log(entryDifference);
-        entryDifference = entryDifference - 1
-    }
-   
 }
+    
 
 
 

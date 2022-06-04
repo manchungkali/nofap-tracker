@@ -9,7 +9,8 @@ body {
 
 h1 {
     color: #ffa500
-        /*#27293d*/
+        /*#27293d 
+        #00ff0d */
     ;
     margin-top: 15px;
     margin-bottom: 0;
@@ -107,6 +108,8 @@ tbody {
     border: 1px solid #808080;
 }
 
+
+
 th {
     border: 1px solid #808080;
     padding: 5px 10px;
@@ -117,7 +120,7 @@ td {
     color: #ffffff;
     border: 1px solid #808080;
     text-align: center;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 
 #days-count-el {
@@ -161,6 +164,10 @@ h5 {
 }
 
 
+tbody:nth-child(even)>tr>td {
+    background-color: #222222;
+    color:#fff;
+}
 
 
 footer,

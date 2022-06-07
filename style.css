@@ -172,6 +172,7 @@ tbody:nth-child(even)>tr>td {
 
 footer,
 a {
+
     text-align: right;
     text-decoration: none;
     color: #ffa500;
@@ -182,7 +183,10 @@ a {
 
 #clear {
     float: left;
+}
 
+footer{
+    max-width:400px;
 }
 
 

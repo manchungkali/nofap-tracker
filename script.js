@@ -45,7 +45,7 @@ function fapped() { // When slipped btn is pressed
     document.getElementById("demo").innerHTML = "Nooo King!!! Dont throw<br> your crown like that"
 }
 
-function autoFapped(dateNumberJS, monthNumberJS, entryTime){
+function autoFapped(dateNumberJS, monthNumberJS, entryTime) { // When user misses a day
     var status = "Missed"
     console.log("Auto Slipped pressed")
     fappedNumber += 1
@@ -143,7 +143,6 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                             <th><b>Date</b></th>
                             <th><b>Status</b></th>
                             <th><b>Percent</b></th>
-                            
                         </tr>`
     // For loop
     for (var i = 0; i < myArray.length; i++) {
@@ -152,8 +151,7 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                         <td> ${myArray[i].day}</td>
                         <td> ${myArray[i].dateNumber} ${months[myArray[i].monthNumber]}</td>
                         <td> ${myArray[i].status}</td>
-                        <td> ${myArray[i].percent}</td>
-                        
+                        <td> ${myArray[i].percent}</td>    
                   </tr>`
         tableEl.innerHTML += row
     }
@@ -163,36 +161,24 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                               </tr>`
 }
 
-function missingEntries(){
+function missingEntries() { // Checks if the user has missed any past entries
     console.log("missing entries called")
-    let entryDifference = entryTime-lastEntryTime
-
-    let dateRatio = (entryDifference/86400000).toFixed(0)
-
-    setTimeout(function(){
-        while (dateRatio > 1){
-
-            console.log("yes difference")
+    let entryDifference = entryTime - lastEntryTime
+    let dateRatio = (entryDifference / 86400000).toFixed(0)
+    setTimeout(function () {
+        while (dateRatio > 1) {
             console.log(dateRatio)
-            var date = new Date(lastEntryTime + 86400000) ; // create Date object
+            var date = new Date(lastEntryTime + 86400000); 
             let tempDate = date.getDate()
             let tempMonth = date.getMonth()
-    
-            autoFapped(tempDate,tempMonth, date.getTime())
+            autoFapped(tempDate, tempMonth, date.getTime())
             console.log(entryDifference);
             dateRatio = dateRatio - 1
             lastEntryTime += 86400000
-
         }
         lastEntryTime = 0
     }, 1000);
-
-    
-        
 }
-    
-
-
 
 function singleChance() {  //Making sure you only get a single chance a day
     let dateCheck = savedData[savedData.length - 1].dateNumber
@@ -205,7 +191,7 @@ function singleChance() {  //Making sure you only get a single chance a day
     }
 }
 
-function clr() {
+function clr() { //Clears the data array
     alert("ur deleting all the saved data\nu ok bro?")
     console.log("pressed")
     localStorage.clear();
@@ -226,7 +212,7 @@ function showToday() {
 }
 
 function openModal() {
-  modalContainer.classList.add('show');
+    modalContainer.classList.add('show');
 }
 
 function closeModal() {
@@ -266,12 +252,12 @@ function timerInactive() {
         document.getElementById("demo").innerHTML = "Button Disabled For <br>" + hours + " hours, " +
             minutes + " minutes, & " + seconds + " seconds";
 
-        // If the count down is over, write some text 
+        // If the count down is over, write some text
         if (distance < 1000) {
             clearInterval(x);
             document.getElementById("fapped-btn").disabled = false;
             document.getElementById("saved-btn").disabled = false;
-            
+
         }
     }, 1000);
 }
@@ -300,7 +286,7 @@ function timerActive() {
         document.getElementById("demo").innerHTML = "Button Active For<br>" + hours + " hours, " +
             minutes + " minutes, & " + seconds + " seconds";
 
-        // If the count down is over, write some text 
+        // If the count down is over, write some text
         if (distance < 1000) {
             block(x)
             console.log(distance)

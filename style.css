@@ -172,7 +172,7 @@ tbody:nth-child(even)>tr>td {
 
 footer,
 a {
-
+    cursor: pointer;
     text-align: right;
     text-decoration: none;
     color: #ffa500;

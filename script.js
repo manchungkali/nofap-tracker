@@ -224,6 +224,12 @@ function closeModal() {
     modalContainer.classList.remove('show');
 }
 
+
+if (sessionStorage.getItem("modal") == null) {
+    sessionStorage.setItem("modal", "[]")
+    openModal()
+}
+
 console.log("last line")
 
 //|||||||||||||||||||||||||||>>  TIMER ALGORITHM  <<|||||||||||||||||||||||||//

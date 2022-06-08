@@ -168,7 +168,7 @@ function missingEntries() { // Checks if the user has missed any past entries
     setTimeout(function () {
         while (dateRatio > 1) {
             console.log(dateRatio)
-            var date = new Date(lastEntryTime + 86400000); 
+            var date = new Date(lastEntryTime + 86400000);
             let tempDate = date.getDate()
             let tempMonth = date.getMonth()
             autoFapped(tempDate, tempMonth, date.getTime())
@@ -192,10 +192,15 @@ function singleChance() {  //Making sure you only get a single chance a day
 }
 
 function clr() { //Clears the data array
-    alert("ur deleting all the saved data\nu ok bro?")
-    console.log("pressed")
-    localStorage.clear();
-    location.reload()
+
+    if (confirm("ur deleting all the saved data\nu ok bro?")) {
+        console.log("pressed ok")
+        localStorage.clear();
+        location.reload()
+    } else {
+        console.log("pressed cancel");
+    }
+
 }
 
 function clock() {

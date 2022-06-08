@@ -42,7 +42,7 @@ function fapped() { // When slipped btn is pressed
     dayIncrement()
     percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
     disableBtn()
-    document.getElementById("demo").innerHTML = "Nooo King!!! Dont throw<br> your crown like that"
+    document.getElementById("demo").innerHTML = "Nooo King!💀😭 Dont throw<br> your crown like that"
 }
 
 function autoFapped(dateNumberJS, monthNumberJS, entryTime) { // When user misses a day

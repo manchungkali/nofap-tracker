@@ -15,6 +15,9 @@ let savedNumber = 0
 let percent = 0
 let dateNumberJS = new Date().getDate()
 let monthNumberJS = new Date().getMonth()
+let entryTime = new Date().getTime()
+let hourToMs = 0
+let lastEntryTime = 0
 let myArray = []
 let savedData = []
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
@@ -37,9 +40,17 @@ function fapped() { // When slipped btn is pressed
     console.log("Slipped pressed")
     fappedNumber += 1
     dayIncrement()
-    percentCalc(status, dateNumberJS, monthNumberJS)
+    percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
     disableBtn()
     document.getElementById("demo").innerHTML = "Nooo King!!! Dont throw<br> your crown like that"
+}
+
+function autoFapped(dateNumberJS, monthNumberJS, entryTime){
+    var status = "Slipped *"
+    console.log("Auto Slipped pressed")
+    fappedNumber += 1
+    dayIncrement()
+    percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
 }
 
 function saved() { // When saved btn is pressed
@@ -47,7 +58,7 @@ function saved() { // When saved btn is pressed
     console.log("saved pressed")
     savedNumber += 1
     dayIncrement()
-    percentCalc(status, dateNumberJS, monthNumberJS)
+    percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
     disableBtn()
     document.getElementById("demo").innerHTML = "You're an ABSOLUTE GOD 🛐 <br> Keep up the good work!"
 }
@@ -57,15 +68,15 @@ function dayIncrement() { // Manages the day count
     daysCountEl.innerText = "~ DAY " + dayNumber + " ~"
 }
 
-function percentCalc(status, dateNumberJS, monthNumberJS) { // Calculates the percentage and updates the html
+function percentCalc(status, dateNumberJS, monthNumberJS, entryTime) { // Calculates the percentage and updates the html
     console.log("percent pressed")
     percent = savedNumber * 100 / dayNumber
     percentEl.innerText = "Hit Ratio 📈: " + percent.toFixed(2) + "%"
-    addTable(status, dateNumberJS, monthNumberJS)
+    addTable(status, dateNumberJS, monthNumberJS, entryTime)
     //addTable(status, dateNumberJS, monthNumberJS)
 }
 
-function addTable(status, dateNumberJS, monthNumberJS) { // Pushes the data to ARRAY and stores the array locally
+function addTable(status, dateNumberJS, monthNumberJS, entryTime) { // Pushes the data to ARRAY and stores the array locally
     myArray.push(
         {
             day: dayNumber,
@@ -74,7 +85,8 @@ function addTable(status, dateNumberJS, monthNumberJS) { // Pushes the data to A
             fappedNumber: fappedNumber,
             savedNumber: savedNumber,
             dateNumber: dateNumberJS,
-            monthNumber: monthNumberJS
+            monthNumber: monthNumberJS,
+            entryTime: entryTime
         }
     )
     buildTable(myArray)
@@ -107,6 +119,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
     savedData = JSON.parse(localStorage.getItem("progressArray"));
     myArray = savedData
     console.log("retrieved data is called")
+    lastEntryTime = savedData[savedData.length - 1].entryTime
     fappedNumber = savedData[savedData.length - 1].fappedNumber
     dayNumber = savedData[savedData.length - 1].day
     savedNumber = savedData[savedData.length - 1].savedNumber
@@ -116,6 +129,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
     percentEl.innerText = "Hit Ratio 📈: " + percent + "%"
 
     //Making sure you only get a single chance a day
+    missingEntries()
     singleChance()
 }
 
@@ -149,6 +163,30 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                               </tr>`
 }
 
+function missingEntries(){
+    console.log("missing entries called")
+    let entryDifference = entryTime-lastEntryTime
+
+  
+        console.log("missing entries loop called")
+        
+
+    if ((entryDifference/86400000).toFixed(0)> 1){
+
+        console.log("yes difference")
+        var date = new Date(lastEntryTime + 86400000) ; // create Date object
+        let tempDate = date.getDate()
+        let tempMonth = date.getMonth()
+
+        autoFapped(tempDate,tempMonth, date.getTime())
+        console.log(entryDifference);
+        entryDifference = entryDifference - 1
+    }
+   
+}
+
+
+
 function singleChance() {  //Making sure you only get a single chance a day
     let dateCheck = savedData[savedData.length - 1].dateNumber
     let monthCheck = savedData[savedData.length - 1].monthNumber
@@ -181,7 +219,7 @@ function showToday() {
 }
 
 function openModal() {
-    modalContainer.classList.add('show');
+  modalContainer.classList.add('show');
 }
 
 function closeModal() {

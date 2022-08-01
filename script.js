@@ -1,5 +1,6 @@
 //|||||||||||||||||||||||||||->>  INITIALISATION  <<-|||||||||||||||||||||||||
 
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
 const open = document.getElementById('open');
 const close = document.getElementById('close');
 const modalContainer = document.getElementById('modal-container');
@@ -9,29 +10,26 @@ const tbodyEl = document.getElementById("tableEl")
 const smallTableEl = document.getElementById("table-count")
 const timeNowEl = document.getElementById("timeNow")
 const todayDateEl = document.getElementById("today-date")
+let dateNumberJS = new Date().getDate()
+let monthNumberJS = new Date().getMonth()
+let entryTime = new Date().getTime()
 let dayNumber = 0
 let fappedNumber = 0
 let savedNumber = 0
 let percent = 0
-let dateNumberJS = new Date().getDate()
-let monthNumberJS = new Date().getMonth()
-let entryTime = new Date().getTime()
 let hourToMs = 0
 let lastEntryTime = 0
 let streaks = 0
 let myArray = []
 let savedData = []
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
-
 
 document.getElementById("fapped-btn").disabled = false //keep it true
 document.getElementById("saved-btn").disabled = false //keep it true
 
-
 //clock()
 //timer()
 showToday()
-checkSavedArray() //  {    DO NOT CHANGE
+checkSavedArray() //  {       DO NOT CHANGE
 buildTable(myArray)   //  { THE ORDER OF THESE
 
 //|||||||||||||||||||||||||||->>  THE FUNCTIONLAND  <<-|||||||||||||||||||||||||

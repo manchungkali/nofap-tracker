@@ -3,12 +3,12 @@
 const open = document.getElementById('open');
 const close = document.getElementById('close');
 const modalContainer = document.getElementById('modal-container');
-let daysCountEl = document.getElementById("days-count-el")
-let percentEl = document.getElementById("percent-el")
-let tbodyEl = document.getElementById("tableEl")
-let smallTableEl = document.getElementById("table-count")
-let timeNowEl = document.getElementById("timeNow")
-let todayDateEl = document.getElementById("today-date")
+const daysCountEl = document.getElementById("days-count-el")
+const percentEl = document.getElementById("percent-el")
+const tbodyEl = document.getElementById("tableEl")
+const smallTableEl = document.getElementById("table-count")
+const timeNowEl = document.getElementById("timeNow")
+const todayDateEl = document.getElementById("today-date")
 let dayNumber = 0
 let fappedNumber = 0
 let savedNumber = 0
@@ -18,6 +18,7 @@ let monthNumberJS = new Date().getMonth()
 let entryTime = new Date().getTime()
 let hourToMs = 0
 let lastEntryTime = 0
+let streaks = 0
 let myArray = []
 let savedData = []
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
@@ -39,6 +40,7 @@ function fapped() { // When slipped btn is pressed
     var status = "Slipped"
     console.log("Slipped pressed")
     fappedNumber += 1
+    streaks = 0
     dayIncrement()
     percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
     disableBtn()
@@ -49,6 +51,7 @@ function autoFapped(dateNumberJS, monthNumberJS, entryTime) { // When user misse
     var status = "Missed"
     console.log("Auto Slipped pressed")
     fappedNumber += 1
+    streaks = 0
     dayIncrement()
     percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
 }
@@ -57,6 +60,7 @@ function saved() { // When saved btn is pressed
     var status = "Saved"
     console.log("saved pressed")
     savedNumber += 1
+    streaks += 1
     dayIncrement()
     percentCalc(status, dateNumberJS, monthNumberJS, entryTime)
     disableBtn()
@@ -86,7 +90,8 @@ function addTable(status, dateNumberJS, monthNumberJS, entryTime) { // Pushes th
             savedNumber: savedNumber,
             dateNumber: dateNumberJS,
             monthNumber: monthNumberJS,
-            entryTime: entryTime
+            entryTime: entryTime,
+            streaks: streaks
         }
     )
     buildTable(myArray)
@@ -124,6 +129,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
     dayNumber = savedData[savedData.length - 1].day
     savedNumber = savedData[savedData.length - 1].savedNumber
     percent = savedData[savedData.length - 1].percent
+    streaks = savedData[savedData.length - 1].streaks
 
     daysCountEl.innerText = "~ DAY " + (dayNumber + 1) + " ~" // to update the html upon starting
     percentEl.innerText = "Hit Ratio 📈: " + percent + "%"
@@ -136,7 +142,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
 function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table rows
     console.log("Reached buildTable")
     tableEl.innerHTML = `<tr>
-                            <th colspan="4">Daily Progress 🚧</th>
+                            <th colspan="4">Daily Progress <span style="color:grey;">${streaks}🔥</span> </th>
                         </tr>
                         <tr>
                             <th><b>Day</b></th>

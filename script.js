@@ -36,7 +36,7 @@ buildTable(myArray)   //  { THE ORDER OF THESE
 
 function fapped() { // When slipped btn is pressed
     var status = "Slipped"
-    console.log("Slipped pressed")
+    // console.log("Slipped pressed")
     fappedNumber += 1
     streaks = 0
     dayIncrement()
@@ -47,7 +47,7 @@ function fapped() { // When slipped btn is pressed
 
 function autoFapped(dateNumberJS, monthNumberJS, entryTime) { // When user misses a day
     var status = "Missed"
-    console.log("Auto Slipped pressed")
+    //console.log("Auto Slipped pressed")
     fappedNumber += 1
     streaks = 0
     dayIncrement()
@@ -56,7 +56,7 @@ function autoFapped(dateNumberJS, monthNumberJS, entryTime) { // When user misse
 
 function saved() { // When saved btn is pressed
     var status = "Saved"
-    console.log("saved pressed")
+    // console.log("saved pressed")
     savedNumber += 1
     streaks += 1
     dayIncrement()
@@ -71,7 +71,7 @@ function dayIncrement() { // Manages the day count
 }
 
 function percentCalc(status, dateNumberJS, monthNumberJS, entryTime) { // Calculates the percentage and updates the html
-    console.log("percent pressed")
+    // console.log("percent pressed")
     percent = savedNumber * 100 / dayNumber
     percentEl.innerText = "Hit Ratio 📈: " + percent.toFixed(2) + "%"
     addTable(status, dateNumberJS, monthNumberJS, entryTime)
@@ -111,9 +111,9 @@ function enableBtn() { // Enables the buttons (when inside the time limit)
 function checkSavedArray() { // Checks if the local array exists or not, if not creates an empty local array
     if (localStorage.getItem("progressArray") == null) {
         localStorage.setItem("progressArray", "[]")
-        console.log("Locale is null")
+        // console.log("Locale is null")
     } else {
-        console.log("Locale is NOt null")
+        // console.log("Locale is NOt null")
         retrieveData()
     }
 }
@@ -121,7 +121,7 @@ function checkSavedArray() { // Checks if the local array exists or not, if not 
 function retrieveData() { // Retrieves data from local storage and assigns it to respective variables
     savedData = JSON.parse(localStorage.getItem("progressArray"));
     myArray = savedData
-    console.log("retrieved data is called")
+    // console.log("retrieved data is called")
     lastEntryTime = savedData[savedData.length - 1].entryTime
     fappedNumber = savedData[savedData.length - 1].fappedNumber
     dayNumber = savedData[savedData.length - 1].day
@@ -138,7 +138,7 @@ function retrieveData() { // Retrieves data from local storage and assigns it to
 }
 
 function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table rows
-    console.log("Reached buildTable")
+    // console.log("Reached buildTable")
     tableEl.innerHTML = `<tr>
                             <th colspan="4">Daily Progress <span style="color:grey;">${streaks}🔥</span> </th>
                         </tr>
@@ -150,7 +150,7 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
                         </tr>`
     // For loop
     for (var i = 0; i < myArray.length; i++) {
-        console.log("Reached buildTable loop")
+        // console.log("Reached buildTable loop")
         var row = `<tr>
                         <td> ${myArray[i].day}</td>
                         <td> ${myArray[i].dateNumber} ${months[myArray[i].monthNumber]}</td>
@@ -166,17 +166,17 @@ function buildTable(myArray) { // Pulls Data from ARRAY and Builds the table row
 }
 
 function missingEntries() { // Checks if the user has missed any past entries
-    console.log("missing entries called")
+    // console.log("missing entries called")
     let entryDifference = entryTime - lastEntryTime
     let dateRatio = (entryDifference / 86400000).toFixed(0)
     setTimeout(function () {
         while (dateRatio > 1) {
-            console.log(dateRatio)
+            // console.log(dateRatio)
             var date = new Date(lastEntryTime + 86400000);
             let tempDate = date.getDate()
             let tempMonth = date.getMonth()
             autoFapped(tempDate, tempMonth, date.getTime())
-            console.log(entryDifference);
+            // console.log(entryDifference);
             dateRatio = dateRatio - 1
             lastEntryTime += 86400000
         }
@@ -188,8 +188,8 @@ function singleChance() {  //Making sure you only get a single chance a day
     let dateCheck = savedData[savedData.length - 1].dateNumber
     let monthCheck = savedData[savedData.length - 1].monthNumber
     if (dateNumberJS == dateCheck && monthNumberJS == monthCheck) {
-        console.log("Dates matched 1")
-        console.log(dateNumberJS, months[monthNumberJS])
+        // console.log("Dates matched 1")
+        // console.log(dateNumberJS, months[monthNumberJS])
         disableBtn()
         document.getElementById("demo").innerHTML = "You're done for the day. <br> Come back Tomorrow!"
     }
@@ -198,11 +198,11 @@ function singleChance() {  //Making sure you only get a single chance a day
 function clr() { //Clears the data array
 
     if (confirm("ur deleting all the saved data\nu ok bro?")) {
-        console.log("pressed ok")
+        // console.log("pressed ok")
         localStorage.clear();
         location.reload()
     } else {
-        console.log("pressed cancel");
+        // console.log("pressed cancel");
     }
 
 }
@@ -216,7 +216,7 @@ function clock() {
 }
 
 function showToday() {
-    console.log("showtoday")
+    // console.log("showtoday")
     todayDateEl.innerHTML = `${months[monthNumberJS]} ${dateNumberJS}th`
 }
 
@@ -234,7 +234,7 @@ if (sessionStorage.getItem("modal") == null) {
     openModal()
 }
 
-console.log("last line")
+
 
 //|||||||||||||||||||||||||||>>  TIMER ALGORITHM  <<|||||||||||||||||||||||||//
 
@@ -281,7 +281,7 @@ function timerInactive() {
 
 countDownDate1 = new Date(Date.now() + 10000).getTime();
 function timerActive() {
-    console.log("timer Y called")
+    // console.log("timer Y called")
     // Update the count down every 1 second
     var x = setInterval(function () {
 
@@ -304,7 +304,7 @@ function timerActive() {
         // If the count down is over, write some text
         if (distance < 1000) {
             block(x)
-            console.log(distance)
+            // console.log(distance)
             distance = 0
         }
     }, 1000);
@@ -325,17 +325,17 @@ function timer() {
     var checkMinutes = new Date().getMinutes()
     var hourNum = 17 // Give the Hour Number here
     if (checkHour == hourNum) {
-        console.log("if> true")
-        console.log(checkHour, checkMinutes)
+        // console.log("if> true")
+        // console.log(checkHour, checkMinutes)
         enableBtn()
     } else if (checkHour < hourNum) {
-        console.log("if> false, moved to else if")
-        console.log(checkHour, checkMinutes)
+        // console.log("if> false, moved to else if")
+        // console.log(checkHour, checkMinutes)
         disableBtn()
         document.getElementById("demo").innerHTML = "Buttons are Disabled until 5pm Today"
     } else if (checkHour > hourNum) {
-        console.log("if> false, moved to else if 2")
-        console.log(checkHour, checkMinutes)
+        // console.log("if> false, moved to else if 2")
+        // console.log(checkHour, checkMinutes)
         disableBtn()
         document.getElementById("demo").innerHTML = "Buttons are Disabled until 5pm Tomorrow"
     }
